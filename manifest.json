@@ -1,0 +1,74 @@
+{
+  "name": "youtube",
+  "version": "1.0",
+  "description": "Search YouTube for videos or retrieve trending YouTube content. Use ONLY for YouTube-specific requests. For general web searches use duckduckgo_search.",
+  "documentation": "Searches YouTube for videos matching a query or retrieves the current trending videos, returning video metadata (title, channel, thumbnail, duration, view count, URL) rendered as an embedded card. Use exclusively for YouTube-specific requests — when the user asks for a YouTube video, wants to see what's trending on YouTube, or requests video content by topic. Common triggers: 'find me a video about X', 'show me lo-fi music', 'what's trending on YouTube', 'play a cooking tutorial', 'search YouTube for...', 'I want to watch something about...'. For general web searches unrelated to video content, use duckduckgo_search instead. Use result_count=1 for a single embedded video, result_count=3 for a browsable grid of results.",
+  "category": "research",
+  "icon": "https://www.youtube.com/favicon.ico",
+
+  "trigger": {
+    "type": "on_demand",
+    "description": "Invoked when the user asks about YouTube videos, trending content, or requests a video search."
+  },
+
+  "config_schema": {
+    "YOUTUBE_API_KEY": {
+      "type": "string",
+      "required": false,
+      "secret": true,
+      "description": "YouTube Data API v3 key. Optional — falls back to scraping without it."
+    }
+  },
+
+  "parameters": {
+    "query": {
+      "type": "string",
+      "required": false,
+      "description": "Search query. Leave empty to fetch trending videos."
+    },
+    "result_count": {
+      "type": "integer",
+      "required": false,
+      "default": 1,
+      "description": "Number of results to display: 1 (embed card) or 3 (thumbnail grid). Choose 1 for a specific video lookup, 3 for browse/discovery."
+    }
+  },
+
+  "returns": {
+    "videos": {
+      "type": "array",
+      "description": "Array of video objects with id, title, channel, thumbnail_url, duration, view_count, url."
+    },
+    "mode": {
+      "type": "string",
+      "description": "Either 'search' or 'trending'."
+    }
+  },
+
+  "constraints": {
+    "timeout_seconds": 15,
+    "hourly_budget": 20,
+    "cooldown_seconds": 0
+  },
+
+  "sandbox": {
+    "network": "bridge",
+    "memory": "256m"
+  },
+
+  "output": {
+    "synthesize": false,
+    "card": {
+      "enabled": true,
+      "title": "YouTube",
+      "accent_color": "#FF0000",
+      "background_color": "rgba(255, 0, 0, 0.06)"
+    }
+  },
+
+  "tips": [
+    "Ask for '1 result' or '3 results' to control the card layout.",
+    "Omit the query to see what's trending.",
+    "Configure a YouTube Data API v3 key in tool settings for better reliability (optional)."
+  ]
+}
