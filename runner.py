@@ -89,8 +89,8 @@ def _render_single_video_card(video: dict) -> str:
     channel_badge = f'<span style="position:absolute;bottom:10px;left:10px;color:rgba(255,255,255,0.8);font-size:11px;font-family:system-ui,sans-serif;text-shadow:0 1px 4px rgba(0,0,0,0.8);">{channel}</span>' if channel else ""
     duration_badge = f'<span style="position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,0.82);color:#fff;padding:2px 6px;border-radius:3px;font-size:11px;font-weight:700;font-family:system-ui,sans-serif;letter-spacing:0.02em;">{duration}</span>' if duration else ""
 
-    return f"""<div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000;cursor:pointer;">
-  <div class="yt-th" style="position:relative;width:100%;height:100%;">
+    return f"""<div data-lazy-embed style="position:relative;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000;cursor:pointer;">
+  <div data-lazy-thumb style="position:relative;width:100%;height:100%;">
     <img src="{thumbnail_url}" style="width:100%;height:100%;object-fit:cover;display:block;"/>
     <div style="position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,0.65));pointer-events:none;"></div>
     {channel_badge}
@@ -101,7 +101,7 @@ def _render_single_video_card(video: dict) -> str:
       </div>
     </div>
   </div>
-  <iframe class="yt-fr" style="display:none;width:100%;height:100%;border:none;" src="about:blank" data-src="{embed_url}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe data-lazy-src="{embed_url}" style="display:none;width:100%;height:100%;border:none;" src="about:blank" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>"""
 
 
