@@ -1,3 +1,7 @@
-.claude/
-claude.md
+# SMB filesystem artifacts (macOS network volumes)
+.smbdelete*
+
+# Python
 __pycache__/
+*.pyc
+*.pyo
