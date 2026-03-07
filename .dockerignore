@@ -1,4 +1,1 @@
-.env
-.env.example
-*.pyc
-__pycache__
+# .dockerignore removed - YouTube tool promoted to trusted execution

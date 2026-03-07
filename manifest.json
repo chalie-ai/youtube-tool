@@ -51,11 +51,6 @@
     "cooldown_seconds": 0
   },
 
-  "sandbox": {
-    "network": "bridge",
-    "memory": "256m"
-  },
-
   "output": {
     "synthesize": false,
     "card": {

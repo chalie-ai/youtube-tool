@@ -1,0 +1,38 @@
+{
+  "tools": [
+    {
+      "name": "youtube",
+      "version": "1.0",
+      "description": "Search YouTube for videos or retrieve trending YouTube content.",
+      "category": "research",
+      "auto_install": true,
+      "trusted_execution": true,
+      "dependencies": [
+        "requests>=2.31.0",
+        "youtube-search-python>=1.6.6",
+        "httpx<0.28.0"
+      ],
+      "config_schema": {
+        "YOUTUBE_API_KEY": {
+          "type": "string",
+          "required": false,
+          "secret": true,
+          "description": "YouTube Data API v3 key. Optional — falls back to scraping without it."
+        }
+      },
+      "parameters": {
+        "query": {
+          "type": "string",
+          "required": false,
+          "description": "Search query. Leave empty to fetch trending videos."
+        },
+        "result_count": {
+          "type": "integer",
+          "required": false,
+          "default": 1,
+          "description": "Number of results to display: 1 (embed card) or 3 (thumbnail grid)."
+        }
+      }
+    }
+  ]
+}
