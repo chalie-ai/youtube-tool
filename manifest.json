@@ -65,5 +65,8 @@
     "Ask for '1 result' or '3 results' to control the card layout.",
     "Omit the query to see what's trending.",
     "Configure a YouTube Data API v3 key in tool settings for better reliability (optional)."
-  ]
+  ],
+
+  "trust": true,
+  "installs_by_default": true
 }

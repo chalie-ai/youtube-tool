@@ -1,38 +1,28 @@
-{
-  "tools": [
-    {
-      "name": "youtube",
-      "version": "1.0",
-      "description": "Search YouTube for videos or retrieve trending YouTube content.",
-      "category": "research",
-      "auto_install": true,
-      "trusted_execution": true,
-      "dependencies": [
-        "requests>=2.31.0",
-        "youtube-search-python>=1.6.6",
-        "httpx<0.28.0"
-      ],
-      "config_schema": {
-        "YOUTUBE_API_KEY": {
-          "type": "string",
-          "required": false,
-          "secret": true,
-          "description": "YouTube Data API v3 key. Optional — falls back to scraping without it."
-        }
-      },
-      "parameters": {
-        "query": {
-          "type": "string",
-          "required": false,
-          "description": "Search query. Leave empty to fetch trending videos."
-        },
-        "result_count": {
-          "type": "integer",
-          "required": false,
-          "default": 1,
-          "description": "Number of results to display: 1 (embed card) or 3 (thumbnail grid)."
-        }
-      }
-    }
-  ]
-}
+[
+  {
+    "title": "Reddit",
+    "icon": "https://www.reddit.com/favicon.ico",
+    "repo": "charlie-ai/reddit-tool",
+    "summary": "Search Reddit for posts and comments matching a query.",
+    "category": "research",
+    "trigger": {
+      "type": "on_demand",
+      "description": "Invoked when the user asks about Reddit content or requests a search on Reddit."
+    },
+    "trust": true,
+    "installs_by_default": true
+  },
+  {
+    "title": "YouTube",
+    "icon": "https://www.youtube.com/favicon.ico",
+    "repo": "charlie-ai/youtube-tool",
+    "summary": "Search YouTube for videos or retrieve trending YouTube content.",
+    "category": "research",
+    "trigger": {
+      "type": "on_demand",
+      "description": "Invoked when the user asks about YouTube videos, trending content, or requests a video search."
+    },
+    "trust": true,
+    "installs_by_default": true
+  }
+]
