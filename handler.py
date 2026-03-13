@@ -331,6 +331,10 @@ class YouTubeScraper:
                 video = self._format_scraper_video(item)
                 if video:
                     videos.append(video)
+            if len(videos) < limit:
+                logger.warning(
+                    f"[YOUTUBE SCRAPER] Requested {limit} results for '{query}' but only got {len(videos)}"
+                )
             return videos[:limit]
         except Exception as e:
             logger.error(f"[YOUTUBE SCRAPER] Search failed for '{query}': {e}")
@@ -344,12 +348,16 @@ class YouTubeScraper:
         so we approximate with a broad search for popular videos.
         """
         try:
-            results = VideosSearch("", limit=limit).result().get("result", [])
+            results = VideosSearch("trending now", limit=limit).result().get("result", [])
             videos = []
             for item in results:
                 video = self._format_scraper_video(item)
                 if video:
                     videos.append(video)
+            if len(videos) < limit:
+                logger.warning(
+                    f"[YOUTUBE SCRAPER] Requested {limit} trending results but only got {len(videos)}"
+                )
             return videos[:limit]
         except Exception as e:
             logger.error(f"[YOUTUBE SCRAPER] Trending failed: {e}")
